@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/voxel-pack/PNG/Particles/square_blue.png" type="Texture" id=1]
+[ext_resource path="res://assets/voxel-pack/PNG/Tiles/dirt_grass.png" type="Texture" id=2]
+[ext_resource path="res://assets/kenney_sportspack/PNG/Equipment/ball_soccer2.png" type="Texture" id=3]
+[ext_resource path="res://Burbank Big Condensed Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/btnModoClassico.gd" type="Script" id=5]
+[ext_resource path="res://scripts/btnSair.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0.0627451, 0.054902, 0.054902, 1 )
+font_data = ExtResource( 4 )
+
+[node name="Inicio" type="Node"]
+
+[node name="square_blue" type="TextureRect" parent="."]
+margin_right = 181.0
+margin_bottom = 194.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+
+[node name="dirt_grass" type="TextureRect" parent="."]
+margin_top = 191.0
+margin_right = 181.0
+margin_bottom = 319.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="ball_soccer2" type="Sprite" parent="."]
+position = Vector2( 33.614, 165.848 )
+scale = Vector2( 3.0013, 2.92333 )
+texture = ExtResource( 3 )
+
+[node name="Titulo" type="Label" parent="."]
+margin_left = 51.9298
+margin_top = 13.0994
+margin_right = 130.93
+margin_bottom = 48.0994
+rect_scale = Vector2( 1.5723, 2.04267 )
+custom_fonts/font = SubResource( 1 )
+text = "Perguntados
+Futebol"
+align = 1
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 39.2983
+margin_top = 200.702
+margin_right = 143.298
+margin_bottom = 316.702
+
+[node name="btnModoClassico" type="Button" parent="Menu"]
+margin_right = 104.0
+margin_bottom = 20.0
+text = "Modo Clássico"
+script = ExtResource( 5 )
+
+[node name="btnModoSurvival" type="Button" parent="Menu"]
+margin_top = 24.0
+margin_right = 104.0
+margin_bottom = 44.0
+text = "Modo Survival"
+
+[node name="btnRanking" type="Button" parent="Menu"]
+margin_top = 48.0
+margin_right = 104.0
+margin_bottom = 68.0
+text = "Ranking"
+
+[node name="btnConfiguracoes" type="Button" parent="Menu"]
+margin_top = 72.0
+margin_right = 104.0
+margin_bottom = 92.0
+text = "Configurações"
+
+[node name="btnSair" type="Button" parent="Menu"]
+margin_top = 96.0
+margin_right = 104.0
+margin_bottom = 116.0
+text = "Sair"
+script = ExtResource( 6 )
+[connection signal="pressed" from="Menu/btnModoClassico" to="Menu/btnModoClassico" method="_on_btnModoClassico_pressed"]
+[connection signal="pressed" from="Menu/btnSair" to="Menu/btnSair" method="_on_btnSair_pressed"]
