@@ -1,16 +1,13 @@
 extends Node2D
 
-var categories = ["Futebol Feminino","Análise de Desempenho","Tática","Preparação Física","Psicologia","Futebol de Base","Marketing","Gestão","História"]
-var bgcolor = ["ff69b4","008000","FFA500","002600","6666ff","cccc00","800080","cc0000","40E0D0"]
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var bgcolor = ["40E0D0", "008000", "FFA500", "002600", "6666FF", "CCCC00", "FF69B4", "800080", "CC0000"]
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var category = (randi() % categories.size())
-	var background =  get_node("Panel")
-	var label_Categoria = get_node("Panel/CenterContainer/Categoria")
-	label_Categoria.set_text(categories[category])
-	background.set_frame_color(bgcolor[category])
-	
+	$HTTPRequest.request("http://testes.futebolinterativo.com/api/categoria.php?token=x")
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	var json = JSON.parse(body.get_string_from_utf8())
+	$Panel.set_frame_color(bgcolor[int(json.result.id)-1])
+	$Panel/CenterContainer/Categoria.set_text(json.result.titulo)
+
+
