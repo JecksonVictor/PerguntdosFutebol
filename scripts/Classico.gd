@@ -9,5 +9,6 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	$Panel.set_frame_color(bgcolor[int(json.result.id)-1])
 	$Panel/CenterContainer/Categoria.set_text(json.result.titulo)
-
-
+	
+	yield(get_tree().create_timer(1.0), "timeout")
+	scene_switcher.change_scene(json.result.id)

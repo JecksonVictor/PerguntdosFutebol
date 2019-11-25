@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="PerguntadosFutebol"
 run/main_scene="res://scenes/Inicio.tscn"
 
+[autoload]
+
+scene_switcher="*res://scripts/scene_switcher.gd"
+
 [display]
 
 window/size/width=180
