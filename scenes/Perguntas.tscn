@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Perguntas.gd" type="Script" id=1]
 [ext_resource path="res://Burbank Big Condensed Black.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,20 @@
 
 [sub_resource type="DynamicFont" id=2]
 size = 14
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="Classico" type="Node2D"]
@@ -25,8 +39,8 @@ margin_right = -5.0
 margin_bottom = 16.0
 
 [node name="Pergunta" type="Label" parent="Panel/Titulo"]
-margin_left = 57.0
-margin_right = 112.0
+margin_left = 59.0
+margin_right = 110.0
 margin_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -34,16 +48,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Categoria"
+text = "Pergunta"
 uppercase = true
-
-[node name="2" type="RichTextLabel" parent="Panel/Titulo"]
-margin_left = 85.0
-margin_top = 7.0
-margin_right = 85.0
-margin_bottom = 7.0
-tab_size = 1
-scroll_following = true
 
 [node name="Alternativas" type="CenterContainer" parent="Panel"]
 anchor_top = 0.5
@@ -59,11 +65,23 @@ margin_right = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="autor" type="Label" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_left = 5.0
+margin_top = -30.0
+
+[node name="acertos" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 175.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 3 )
+
+[node name="autor" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 16.0
+margin_right = 175.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 4 )
 
 [node name="back" type="Button" parent="."]
 visible = false

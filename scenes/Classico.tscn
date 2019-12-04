@@ -8,6 +8,10 @@
 [sub_resource type="Theme" id=1]
 
 [sub_resource type="DynamicFont" id=2]
+size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="Classico" type="Node2D"]
@@ -22,10 +26,10 @@ margin_right = 180.0
 margin_bottom = 320.0
 
 [node name="Categoria" type="Label" parent="Panel/CenterContainer"]
-margin_left = 62.0
-margin_top = 152.0
-margin_right = 118.0
-margin_bottom = 168.0
+margin_left = 58.0
+margin_top = 150.0
+margin_right = 122.0
+margin_bottom = 169.0
 size_flags_vertical = 5
 theme = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )

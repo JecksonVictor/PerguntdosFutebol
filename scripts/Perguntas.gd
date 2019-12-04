@@ -12,16 +12,17 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 	$Panel.set_frame_color(bgcolor[int(json.result.id_categoria)-1])
 	$Panel/Titulo/Pergunta.set_text(arrume(str(json.result.question)))
-	
-	$Panel/autor.set_text("Criada por " + json.result.author)
+	$Panel/VBoxContainer/acertos.set_text("Acertos: " + str(scene_switcher.get_acertos()))
+	$Panel/VBoxContainer/autor.set_text("Criada por " + json.result.author)
 	
 	for alternativa in json.result.answers:
 		var button = Button.new()
 		
 		button.set_text(alternativa.text)
-		button.align(Button.ALIGN_LEFT)
 		button.set_margins_preset(Control.PRESET_CENTER_TOP,0,buttons.size()*10)
 		button.set_custom_minimum_size(Vector2(get_viewport().size.x/2, 0))
+		button.set_size(Vector2(get_viewport().size.x/2, 0))
+		button.add_stylebox_override("normal", load("res://themes/button.tres"))
 		
 		button.connect("pressed", self, "_on_Button_"+str(buttons.size()+1)+"_pressed")
 		
@@ -33,14 +34,18 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		$Panel/Alternativas/VBoxContainer.add_child(button)
 
 func arrume(strig):
+	var palavras = strig.split(" ")
+	var linesize = 0
 	var line = ""
-	var c = 0
-	for i in str(strig):
-		if (c == 30):
+	
+	for palavra in palavras:
+		if (palavra.length() + linesize) > 29:
 			line += "\n"
-			c = 0
-		line = line + i
-		c = c + 1
+			linesize = palavra.length()
+		else:
+			linesize = linesize + palavra.length() + 1
+		line += palavra + " "
+		
 	return line
 
 
