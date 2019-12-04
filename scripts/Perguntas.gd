@@ -20,8 +20,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		
 		button.set_text(alternativa.text)
 		button.set_margins_preset(Control.PRESET_CENTER_TOP,0,buttons.size()*10)
-		button.set_custom_minimum_size(Vector2(get_viewport().size.x/2, 0))
-		button.set_size(Vector2(get_viewport().size.x/2, 0))
+		button.set_custom_minimum_size(Vector2(get_viewport().size.x, 20))
+		button.set_size(Vector2(25, 30))
 		button.add_stylebox_override("normal", load("res://themes/button.tres"))
 		
 		button.connect("pressed", self, "_on_Button_"+str(buttons.size()+1)+"_pressed")
